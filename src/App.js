@@ -1,3 +1,5 @@
+import "./App.css";
+
 const App = ({ name }) => {
   return `
     <h2> Heylo, ${name} </h2>
