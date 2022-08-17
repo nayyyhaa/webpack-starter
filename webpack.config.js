@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.js",
 
   output: {
-    filename: "main.js",
+    filename: "[name].[contenthash].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -39,6 +39,19 @@ module.exports = {
       template: path.resolve(__dirname, "src", "index.html"),
     }),
   ],
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        node_vendors: {
+          name: "vendor",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+          priority: 1,
+        },
+      },
+    },
+  },
 
   mode: "production",
 };
